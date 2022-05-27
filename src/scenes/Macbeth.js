@@ -52,10 +52,9 @@ class Macbeth extends Phaser.Scene {
         // ready the character dialog images offscreen
 
         this.witch1 = this.add.sprite(this.OFFSCREEN_X, this.DBOX_Y+8, 'witch1').setOrigin(0, 1);
-        this.witch1.scale_size = this.witch1.displayHeight/70
 
         this.witch2 = this.add.sprite(this.OFFSCREEN_X, this.DBOX_Y+8, 'witch2').setOrigin(0, 1);
-        this.witch2.scale_size = this.witch2.displayHeight/70
+        //this.witch2 = this.witch2.displayHeight/70
 
         this.witch3 = this.add.sprite(this.OFFSCREEN_X, this.DBOX_Y+8, 'witch3').setOrigin(0, 1);
 
