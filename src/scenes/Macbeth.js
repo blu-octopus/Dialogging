@@ -1,6 +1,6 @@
-class Talking extends Phaser.Scene {
+class Macbeth extends Phaser.Scene {
     constructor() {
-        super("talkingScene");
+        super("macbethScene");
 
         // dialog constants
         this.DBOX_X = 0;			    // dialog box x-position
@@ -28,10 +28,9 @@ class Talking extends Phaser.Scene {
         this.nextText = null;			// player prompt text to continue typing
 
         // character variables
-        this.homer = null;
-        this.minerva = null;
-        this.neptune = null;
-        this.jove = null;
+        this.witch1 = null;
+        this.witch2 = null;
+        this.witch3 = null;
         this.tweenDuration = 500;
 
         this.OFFSCREEN_X = -500;        // x,y values to place characters offscreen
@@ -40,7 +39,7 @@ class Talking extends Phaser.Scene {
 
     create() {
         // parse dialog from JSON file
-        this.dialog = this.cache.json.get('dialog');
+        this.dialog = this.cache.json.get('Macbeth');
         //console.log(this.dialog);
 
         // add dialog box sprite
@@ -51,10 +50,14 @@ class Talking extends Phaser.Scene {
         this.nextText = this.add.bitmapText(this.NEXT_X, this.NEXT_Y, this.DBOX_FONT, '', this.TEXT_SIZE);
 
         // ready the character dialog images offscreen
-        this.homer = this.add.sprite(this.OFFSCREEN_X, this.DBOX_Y+8, 'homer').setOrigin(0, 1);
-        this.minerva = this.add.sprite(this.OFFSCREEN_X, this.DBOX_Y+8, 'minerva').setOrigin(0, 1);
-        this.neptune = this.add.sprite(this.OFFSCREEN_X, this.DBOX_Y+8, 'neptune').setOrigin(0, 1);
-        this.jove = this.add.sprite(this.OFFSCREEN_X, this.DBOX_Y+8, 'jove').setOrigin(0, 1);
+
+        this.witch1 = this.add.sprite(this.OFFSCREEN_X, this.DBOX_Y+8, 'witch1').setOrigin(0, 1);
+        this.witch1.scale_size = this.witch1.displayHeight/70
+
+        this.witch2 = this.add.sprite(this.OFFSCREEN_X, this.DBOX_Y+8, 'witch2').setOrigin(0, 1);
+        this.witch2.scale_size = this.witch2.displayHeight/70
+
+        this.witch3 = this.add.sprite(this.OFFSCREEN_X, this.DBOX_Y+8, 'witch3').setOrigin(0, 1);
 
         // input
         cursors = this.input.keyboard.createCursorKeys();
@@ -111,7 +114,6 @@ class Talking extends Phaser.Scene {
             }
             // make text box invisible
             this.dialogbox.visible = false;
-            this.scene.start("macbethScene");
 
         } else {
             // if not, set current speaker
